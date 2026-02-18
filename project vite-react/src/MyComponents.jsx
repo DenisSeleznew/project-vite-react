@@ -1,13 +1,22 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 
-const getTimeFromDate = date => date.toISOString().substring(11, 19);
+const products = [
+	{
+		id: 1,
+		name: 'Чайник',
+	},
+	{
+		id: 2,
+		name: 'Утюг',
+	},
+];
 
 export const MyComponents = () => {
-	const [currentDate, setCurrentDate] = useState(new Date());
-
-	setTimeout(() => {
-		setCurrentDate(new Date());
-	}, 1000);
-
-	return <div>{getTimeFromDate(currentDate)}</div>;
+	return (
+		<ul>
+			{products.map(({ id, name }) => (
+				<li key={id}>{name}</li>
+			))}
+		</ul>
+	);
 };
