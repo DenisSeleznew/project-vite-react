@@ -1,9 +1,13 @@
-import { useEffect } from 'react';
+import { useState } from 'react';
 
-export const MyComponents = props => {
-	const date = new Date();
-	useEffect(() => {
-		console.log(date);
-	}, []);
-	return <div>{String(date)}</div>;
+const getTimeFromDate = date => date.toISOString().substring(11, 19);
+
+export const MyComponents = () => {
+	const [currentDate, setCurrentDate] = useState(new Date());
+
+	setTimeout(() => {
+		setCurrentDate(new Date());
+	}, 1000);
+
+	return <div>{getTimeFromDate(currentDate)}</div>;
 };
